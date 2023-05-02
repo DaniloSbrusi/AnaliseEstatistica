@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <h3>Análise de veículos por habitante em municípios com população semelhante</h3>
+  <br>
+  <form method="post" action="{{ url_for('gerar_grafico') }}">
+    <div class="row">
+      <div class="col-3 form-group">
+        <label for="min">População mínima:</label>
+        <input type="number" class="form-control" id="min" name="min" min="0" max="500000" step="1000" value="10000" required>
+      </div>
+      <div class="col-3 form-group">
+        <label for="max">População máxima:</label>
+        <input type="number" class="form-control" id="max" name="max" min="1000" max="1000000" step="1000" value="50000" required>
+      </div>
+      <div class="col-3 form-group">
+        <label for="ano">Ano:</label>
+        <input type="number" class="form-control" id="ano" name="ano" min="2004" max="2020" step="1" value="2020" required>
+      </div>
+      <div class="col-3 mt-auto">
+        <button type="submit" class="btn btn-primary w-100">Gerar Histograma</button>
+      </div>
+    </div>
+    <br>
+    <div class="row" id="result" hidden>
+      <div class="col-md-7">
+        <img id="grafico" src="" alt="Histograma" class="img-fluid float-end">
+      </div>
+      <div class="col-md-4 mt-5 pt-2">
+        <div class="card">
+          <div class="card-header">Estatísticas</div>
+          <div class="card-body">
+            <p>Média: <span id="mean"></span></p>
+            <p>Desvio Padrão: <span id="std"></span></p>
+            <p>Variância: <span id="var"></span></p>
+            <p>Dados em 1 un. de desvio padrão: <span id="qtd-1"></span></p>
+            <p>Dados em 2 un. de desvio padrão: <span id="qtd-2"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/analise.js') }}"></script>
+{% endblock %}

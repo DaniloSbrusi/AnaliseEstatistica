@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %} Análise por município {% endblock %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1>População e frota de veículos do Brasil</h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Dados por município</h5>
+                    <p class="card-text">Verifique os dados históricos da população e da frota de veículos em cada município brasileiro com gráficos dinâmicos</p>
+                    <a href="{{ url_for('municipios') }}" class="btn btn-primary">Escolher município</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Análise por estado</h5>
+                    <p class="card-text">Selecione o ano de análise e o UF para gerar um gráfico da distribuição da taxa de veículos por habitante em cada estado</p>
+                    <a href="{{ url_for('estado') }}" class="btn btn-primary">Gerar gráfico da distribuição por estado</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Análise em populações semelhantes</h5>
+                    <p class="card-text">Selecione a faixa de população e o ano para analisar a taxa de veículos por habitante em cidades semelhantes, obtendo os principais dados estatísticos</p>
+                    <a href="{{ url_for('analise') }}" class="btn btn-primary">Analisar taxas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="module" src="{{ url_for('static', filename='js/geral.js') }}"></script>
+{% endblock %}

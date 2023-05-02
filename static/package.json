@@ -1,0 +1,16 @@
+{
+  "name": "veiculos_habitante",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Danilo Sbrusi",
+  "license": "ISC",
+  "dependencies": {
+    "echarts": "^5.4.2",
+    "echarts-stat": "^1.2.0",
+    "jquery": "^3.6.4"
+  }
+}

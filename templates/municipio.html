@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} Análise por município {% endblock %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<form>
+    <div class="row">
+        <div class="form-group col-3">
+            <label for="uf">Selecione o Estado:</label>
+            <select name='uf' id='uf-select' class="form-select" onchange="preencherMunicipios()">
+                <option value="" disabled selected>Selecione uma opção</option>
+                {% for uf in uf_list %}
+                <option value="{{ uf }}">{{ uf }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-3">
+            <label for="municipios">Selecione o Município:</label>
+            <select name='municipios' id='municipios-select' class="form-select" onchange="renderizar_grafico()" disabled></select>
+        </div>
+    </div>
+</form>
+
+<div class="row justify-content-center">
+    <div class="mt-5 col-3" id="chart-populacao" style="width: 50%; height:400px;"></div>
+    <div class="mt-5 col-3" id="chart-frota" style="width: 50%; height:400px;"></div>
+</div>
+<div class="mt-5 mx-auto" id="chart-taxa" style="width: 80%; height:400px;"></div>
+
+
+
+<hr>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='/js/municipio.js') }}"></script>
+{% endblock %}
+

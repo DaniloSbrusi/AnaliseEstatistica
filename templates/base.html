@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {{ bootstrap.load_css() }}
+    {% block head %}{% endblock %}
+    
+</head>
+<body>
+    <div id="header">
+        {% block header %}{% endblock %}
+    </div>
+    <div id="content" class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}{% endblock %}
+    </div>
+    {% block scripts %}
+    {{ bootstrap.load_js() }}
+
+    <!-- <script type="module" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+
+    <!-- <script type="module" src="{{ url_for('static', filename='node_modules/echarts/dist/echarts.min.js') }}"></script> -->
+    <!-- <script type="module" src="{{ url_for('static', filename='node_modules/echarts-stat/dist/ecStat.js') }}"></script> -->
+
+
+    {% endblock %}
+</body>
+</html>
